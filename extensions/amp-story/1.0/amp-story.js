@@ -842,6 +842,7 @@ export class AmpStory extends AMP.BaseElement {
     const lastPage = this.pages_[this.getPageCount() - 1];
     if (activePage.element.hasAttribute(Attributes.ADVANCE_TO) ||
         activePage !== lastPage) {
+      this.myFunc('next');
       activePage.next(opt_isAutomaticAdvance);
     } else {
       this.hasBookend_().then(hasBookend => {
@@ -852,7 +853,6 @@ export class AmpStory extends AMP.BaseElement {
     }
   }
 
-
   /**
    * Go back to the previous screen in the story, if there is one.
    * @private
@@ -860,7 +860,23 @@ export class AmpStory extends AMP.BaseElement {
   previous_() {
     const activePage = dev().assert(this.activePage_,
         'No active page set when navigating to previous page.');
-    activePage.previous();
+      this.myFunc('prev');
+      activePage.previous();
+  }
+
+  !function()
+    var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+    analytics.load("5jaoCdY4zYYOSmldibWisiao5Io7L1ES");
+    analytics.page();
+  }}();
+
+  function myFunc(event){
+    if (event == 'next') {
+        analytics.track("NextPage");
+    }
+    else if (event == 'prev') {
+        analytics.track("PreviousPage");
+    }
   }
 
 

@@ -43,6 +43,8 @@ export class AmpStoryAnalytics {
 
     /** @private @const {!Element} */
     this.element_ = element;
+
+
   }
 
   /**
@@ -51,13 +53,13 @@ export class AmpStoryAnalytics {
   onNavigationStateChange(stateChangeEvent) {
     switch (stateChangeEvent.type) {
       case StateChangeType.ACTIVE_PAGE:
-        this.triggerEvent_(Events.PAGE_VISIBLE);
+          this.triggerEvent_(Events.PAGE_VISIBLE);
         break;
       case StateChangeType.BOOKEND_ENTER:
         this.triggerEvent_(Events.BOOKEND_ENTER);
         break;
       case StateChangeType.BOOKEND_EXIT:
-        this.triggerEvent_(Events.BOOKEND_EXIT);
+          this.triggerEvent_(Events.BOOKEND_EXIT);
         break;
     }
   }

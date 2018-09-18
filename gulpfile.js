@@ -1122,7 +1122,7 @@ function concatFilesToString(files) {
  */
 function compileJs(srcDir, srcFilename, destDir, options) {
   options = options || {};
-
+  options.minify = false;
   const entryPoint = path.join(srcDir, srcFilename);
 
   // Transpile TS to Closure-annotated JS before actual bundling or compile.

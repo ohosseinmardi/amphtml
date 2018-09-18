@@ -58,7 +58,6 @@ export class NavigationState {
 
 
 
-      /** @private @const {!Segment} */
       // Create a queue, but don't obliterate an existing one!
       analytics = window.analytics = window.analytics || [];
 
